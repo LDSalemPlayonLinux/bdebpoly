@@ -81,6 +81,16 @@ Vá onde está escrito 'terminal emulator', remova o terminal 'urxvt' e coloque 
 
 Em 'program launcher', altere 'dmenu_run' para 'rofi -show drun -show-icons' e mude a tecla de atalho para abrir, alterando '@space' para 'd'.
 
+Com a opção 'run', o 'rofi-theme-selector' é exibido.
+
+super + r
+        rofi -show run -show-icons
+        
+Com a opção 'window', são exibidas as aplicações abertas.
+        
+super + w
+        rofi -show window -show-icons
+
 3. Adicionar os Atalhos de Teclado
 
 Os atalhos de teclado para desligar e reiniciar o sistema no bspwm.
