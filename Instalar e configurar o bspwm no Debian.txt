@@ -259,3 +259,13 @@ Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um e
 
 ~/.gtkrc-2.0 &
 ~/.config/gtk-3.0/settings.ini &
+
+17 - Som
+
+1. Instale o PipeWire e seus componentes de áudio: sudo apt install pipewire pipewire-audio-client-libraries wireplumber
+
+2. Habilite o PipeWire para gerenciar o áudio: systemctl --user enable --now pipewire pipewire-pulse wireplumber
+
+3. Verifique o status do PipeWire: systemctl --user status pipewire
+
+4. Ajuste o volume e os dispositivos de áudio: sudo apt install pavucontrol
