@@ -269,3 +269,7 @@ Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um e
 3. Verifique o status do PipeWire: systemctl --user status pipewire
 
 4. Ajuste o volume e os dispositivos de áudio: sudo apt install pavucontrol
+
+Reiniciar o sistema
+
+O som funcionando perfeitamente!
