@@ -1,0 +1,191 @@
+Para instalar e configurar o bspwm no Debian, siga os seguintes passos:
+
+1 - Digitar o nome e senha do usuário comum
+
+2 - Entrar como usuário root
+
+Digite: su
+senha do usuário root
+
+3 - Instalação do bspwm e sxhkd e também dos pacotes recomendados
+
+Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie
+
+4 - Adicionar o usuário comun no arquivo sudoers
+
+Digite: nano /etc/sudoers
+
+Desça até a linha com "%sudo"
+Em baixo dela digite o nome de usuário e ALL=(ALL:ALL) All
+
+Salvar e sair do nano
+
+5 - Sair do usuário root
+
+Digite: exit
+
+6 - Configurando o bspwm e sxhkd
+
+Crie os diretórios de configuração:
+
+Digite: mkdir -p ~/.config/bspwm ~/.config/sxhkd
+
+Copie os arquivos de configuração de exemplo:
+
+Digite: cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
+Digite: cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
+
+Dê permissão de execução ao script bspwmrc:
+
+Digite: chmod +x ~/.config/bspwm/bspwmrc
+
+Entrar no arquivo bspwmrc
+
+Digite: nano ~/.config/bspwm/bspwmrc
+
+Adiciona no final do arquivo: sxhkd &
+
+salvar o arquivo e sair
+
+Configuração do sxhkd
+
+O sxhkd gerencia as teclas de atalho para o bspwm. Verifique o arquivo de configuração em ~/.config/sxhkd/sxhkdrc e personalize as teclas de atalho de acordo com suas preferências.
+
+Vá onde está escrito "terminal emulator" e tira o terminal 'urxvt' e coloque o de sua preferencia.Eu escolhi o xfce4-terminal.
+
+Trocar o 'dmenu' pelo 'rofi
+
+Em 'program launcher, altere 'dmenu_run' para 'rofi -show drun -show-icons' e também mudar a tecla de atalho para abrir. Alterar '@space' para 'd'.
+
+Adicionar atalho para Desligar e Reiniciar
+
+Em baixo de "bspwm hotkeys
+
+# Reiniciar
+super + shift + r
+        systemctl reboot
+
+# Desligar
+super + shift + q
+        systemctl poweroff
+
+Iniciar o picom
+
+Entrar no arquivo bspwmrc
+
+Digite: nano ~/.config/bspwm/bspwmrc
+
+Adiciona no final do arquivo: picom &
+
+Nitrogen
+
+nitrogen --restore &
+
+Mate-polkit
+
+/usr/libexec/polkit-mate-authentication-agent-1 &
+
+Salvar e sair
+
+7 - Alterar a resolução da tela
+
+Aperte `Super + Espaço` para abrir o `rofi`, digite `arandr` e pressione `Enter` para abrir o aplicativo.
+
+Ajustar as configurações
+
+Use o `arandr` para configurar a resolução, rotação e disposição dos monitores de acordo com sua preferência. Após fazer os ajustes desejados, vá em Layout > Salvar como... e salve o arquivo de script em um local conveniente, como `~/.screenlayout/monitor.sh`. Recomendo usar o diretório padrão para facilitar o acesso.
+
+Tornar a configuração persistente
+
+Entrar no arquivo bspwmrc
+
+Digite: nano ~/.config/bspwm/bspwmrc
+
+Adiciona no final do arquivo: ~/.screenlayout/monitor.sh &
+
+9 - Criar os diretórios padrão do usuário
+
+Digite: xdg-user-dirs-update
+
+10 - Firewall
+
+Escolhi o "gufw"
+
+'gufw' é uma interface gráfica para o ufw (Uncomplicated Firewall), que é um firewall baseado em linha de comando para sistemas Linux.
+
+Ativar Firewall
+
+Iniciar
+
+Digite: sudo systemctl start ufw.service
+
+Habilitar
+
+Assim "sudo ufw enable" ou desse jeito "sudo systemctl enable ufw.service"
+
+Status
+
+sudo ufw status
+
+Parar o serviço
+
+Digite: sudo systemctl stop ufw.service
+
+Entrar no arquivo bspwmrc
+
+Digite: nano ~/.config/bspwm/bspwmrc
+
+Adiciona no final do arquivo: gufw &
+
+11 - Montar automaticamente um CD/DVD
+
+Adicionar o udiskie para iniciar automaticamente.
+
+udiskie -t &
+
+Adicionar o modulo no arquivo de configuração do polybar
+
+[module/udiskie]
+type = custom/script
+exec = ~/.config/polybar/udiskie.sh
+interval = 10
+
+Depois de adicionar o módulo ao arquivo de configuração, vá até a seção onde você define os módulos da barra (geralmente chamada de modules-left, modules-center ou modules-right) e adicione o módulo udiskie. Por exemplo:
+
+modules-right = udiskie
+
+Criar o script
+
+nano ~/.config/polybar/udiskie.sh
+
+Adicionar no arquivo do script udiskie.sh 
+
+#!/bin/bash
+
+# Ícone para dispositivos montados
+MOUNT_ICON="📀"  # Ícone de mídia, pode ser modificado
+
+# Listar dispositivos montados
+output=$(lsblk -o NAME,MOUNTPOINT | grep '/media' | awk '{print $1}' | sed "s|^|$MOUNT_ICON |")
+
+# Verificar se há dispositivos montados
+if [ -z "$output" ]; then
+    echo "Nenhum dispositivo montado"
+else
+    echo "$output"
+fi
+
+Reiniciar a Polybar
+
+Reinicie a Polybar para que a barra seja atualizada com o novo script:
+
+polybar-msg cmd restart
+
+Configurar o Lightdm para digitar só a senha
+
+sudo nano /etc/lightdm/lightdm.conf
+
+Descomentar em 'greeter-hide-users=false' e 'greeter-show-manual-login=false para true em [Seat:*]
+
+
+Reiniciar o sistema: systemctl reboot
