@@ -220,6 +220,10 @@ else
     echo "$output"
 fi
 
+Dê permissão de execução ao script:
+
+chmod +x ~/.config/polybar/udiskie.sh
+
 Reiniciar a Polybar
 
 Reinicie a Polybar para que a barra seja atualizada com o novo script:
