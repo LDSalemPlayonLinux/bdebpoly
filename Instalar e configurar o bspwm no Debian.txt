@@ -36,7 +36,7 @@ Ao usar o 'less', você pode utilizar as seguintes teclas de navegação.
 
 4 - Instalação do bspwm, sxhkd, polybar e dos pacotes recomendados
 
-Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie git lxappearance
+Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie git lxappearance papirus-icon-theme font-manager
 
 5 - Adicionar o usuário ao arquivo sudoers.
 
