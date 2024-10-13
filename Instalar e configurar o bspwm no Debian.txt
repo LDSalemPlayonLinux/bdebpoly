@@ -36,7 +36,7 @@ Ao usar o 'less', você pode utilizar as seguintes teclas de navegação.
 
 4 - Instalação do bspwm, sxhkd, polybar e dos pacotes recomendados
 
-Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie
+Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie git
 
 5 - Adicionar o usuário ao arquivo sudoers.
 
@@ -214,7 +214,7 @@ Adicionar no arquivo do script 'udiskie.sh'
 #!/bin/bash
 
 # Ícone para dispositivos montados
-MOUNT_ICON=""  # Ícone de mídia, pode ser modificado
+MOUNT_ICON=""  # Ícone de mídia, pode ser modificado
 
 # Listar dispositivos montados
 output=$(lsblk -o NAME,MOUNTPOINT | grep '/media' | awk '{print $1}' | sed "s|^|$MOUNT_ICON |")
@@ -232,10 +232,8 @@ Dê permissão de execução ao script: chmod +x ~/.config/polybar/udiskie.sh
 
 Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
-[bar/example]
-font-0 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
-font-1 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
-font-2 = Noto Sans:style=Regular:size=10;1
+font-0 = liberationmono:style=bold:pixelsize=12;1
+font-1 = fontawesome:style=regular:pixelsize=12;1
 
 4. Reiniciar o Polybar
 
