@@ -1,65 +1,91 @@
-Para instalar e configurar o bspwm no Debian, siga os seguintes passos:
+O bspwm é um gerenciador de janelas minimalista baseado em tiles (blocos). Ele é normalmente utilizado junto com o sxhkd (Simple X HotKey Daemon), que gerencia as combinações de teclas.
 
-1 - Digitar o nome e senha do usuário comum
+Para instalar e configurar o bspwm com Polybar no Debian, siga os passos abaixo:
 
-2 - Entrar como usuário root
+1 - Digite o nome de usuário e a senha.
 
-Digite: su
-senha do usuário root
+2 - Entre como usuário root digitando 'su' e, em seguida, digite a senha do usuário root.
 
-3 - Instalação do bspwm e sxhkd e também dos pacotes recomendados
+3 - Os passos para configurar e usar o gpm no TTY
+
+Instalar: apt install gpm
+
+No TTY (modo texto puro) do Debian, o processo de copiar e colar funciona de maneira diferente dos ambientes gráficos. Como o TTY não tem suporte a interfaces gráficas comuns, você pode utilizar o gpm (General Purpose Mouse), que permite o uso do mouse para copiar e colar texto no console.
+
+Iniciar o gpm: systemctl start gpm
+Ativar o gpm: systemctl enable gpm
+
+Copiar e colar:
+
+੶ Para copiar texto: Selecione o texto com o mouse.
+੶ Para colar o texto copiado: Clique com o botão direito do mouse no local onde deseja colar o texto.
+
+O comando 'cat' simplesmente imprime o conteúdo de um arquivo ou a saída de um comando no terminal de uma só vez, sem permitir navegação interativa. Se o conteúdo for maior que a tela do TTY, ele rolará automaticamente para cima, sem a possibilidade de voltar ou descer a página.
+
+Para visualizar o conteúdo exibido por cat e poder rolar para cima e para baixo, você pode usar em conjunto com 'less' para ter navegação controlada.
+
+Exemplo: cat arquivo.txt | less
+
+Ao usar o 'less', você pode utilizar as seguintes teclas de navegação.
+
+੶ j: Desce uma linha
+੶ k: Sobe uma linha
+੶ u: Sobe meia página
+੶ d: Desce meia página
+੶ q: Sai da visualização e retorna ao terminal
+
+4 - Instalação do bspwm, sxhkd, polybar e dos pacotes recomendados
 
 Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie
 
-4 - Adicionar o usuário comun no arquivo sudoers
+5 - Adicionar o usuário ao arquivo sudoers.
 
 Digite: nano /etc/sudoers
 
-Desça até a linha com "%sudo"
-Em baixo dela digite o nome de usuário e ALL=(ALL:ALL) All
+Desça até a linha com %sudo e, abaixo dela, digite o nome de usuário seguido de ALL=(ALL:ALL) ALL.
 
-Salvar e sair do nano
+Pressione CTRL + O para salvar o arquivo
+Pressione Enter para confirmar o nome do arquivo
+Pressione CTRL + X para sair do nano
 
-5 - Sair do usuário root
+6 - Sair do usuário root
 
 Digite: exit
 
-6 - Configurando o bspwm e sxhkd
+7 - Configurando o bspwm e sxhkd
 
-Crie os diretórios de configuração:
-
-Digite: mkdir -p ~/.config/bspwm ~/.config/sxhkd
+Crie os diretórios de configuração: mkdir -p ~/.config/bspwm ~/.config/sxhkd
 
 Copie os arquivos de configuração de exemplo:
 
-Digite: cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
-Digite: cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
+bspwm: cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
+sxhkd: cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
 
-Dê permissão de execução ao script bspwmrc:
+Dê permissão de execução ao script bspwmrc: chmod +x ~/.config/bspwm/bspwmrc
 
-Digite: chmod +x ~/.config/bspwm/bspwmrc
-
-Entrar no arquivo bspwmrc
-
-Digite: nano ~/.config/bspwm/bspwmrc
+Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
 Adiciona no final do arquivo: sxhkd &
 
-salvar o arquivo e sair
+Pressione CTRL + O para salvar o arquivo
+Pressione Enter para confirmar o nome do arquivo
+Pressione CTRL + X para sair do nano
 
-Configuração do sxhkd
+1. Configuração do sxhkd
 
 O sxhkd gerencia as teclas de atalho para o bspwm. Verifique o arquivo de configuração em ~/.config/sxhkd/sxhkdrc e personalize as teclas de atalho de acordo com suas preferências.
 
-Vá onde está escrito "terminal emulator" e tira o terminal 'urxvt' e coloque o de sua preferencia.Eu escolhi o xfce4-terminal.
+Vá onde está escrito 'terminal emulator', remova o terminal 'urxvt' e coloque o de sua preferência. Eu escolhi o 'xfce4-terminal'.
 
-Trocar o 'dmenu' pelo 'rofi
+2. Substituir o 'dmenu' pelo 'rofi'.
 
-Em 'program launcher, altere 'dmenu_run' para 'rofi -show drun -show-icons' e também mudar a tecla de atalho para abrir. Alterar '@space' para 'd'.
+Em 'program launcher', altere 'dmenu_run' para 'rofi -show drun -show-icons' e mude a tecla de atalho para abrir, alterando '@space' para 'd'.
 
-Adicionar atalho para Desligar e Reiniciar
+3. Adicionar os Atalhos de Teclado
 
-Em baixo de "bspwm hotkeys
+Os atalhos de teclado para desligar e reiniciar o sistema no bspwm.
+
+Abaixo de 'bspwm hotkeys'
 
 # Reiniciar
 super + shift + r
@@ -69,29 +95,23 @@ super + shift + r
 super + shift + q
         systemctl poweroff
         
-Salvar e sair
+Pressione CTRL + O para salvar o arquivo
+Pressione Enter para confirmar o nome do arquivo
+Pressione CTRL + X para sair do nano
 
-7 - Configurando o Polybar
+8 - Configurando o Polybar
 
-Crie a pasta de configuração para o Polybar:
-
-mkdir -p ~/.config/polybar
+Crie a pasta de configuração para o Polybar: mkdir -p ~/.config/polybar
 
 Copie o arquivo de configuração de exemplo (se disponível) ou crie o seu próprio:
 
 cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config
 
-Integrando o Polybar ao BSPWM
+1. Para iniciar o Polybar automaticamente ao iniciar o bspwm, edite o arquivo ~/.config/bspwm/bspwmrc e adicione a seguinte linha ao final do arquivo: ~/.config/polybar/launch.sh &
 
-Para iniciar o Polybar automaticamente ao iniciar o bspwm, edite o arquivo ~/.config/bspwm/bspwmrc e adicione a seguinte linha ao final do arquivo:
+2. Agora, crie o script de inicialização 'launch.sh' para iniciar a barra: nano ~/.config/polybar/launch.sh
 
-~/.config/polybar/launch.sh &
-
-Agora, crie o script de inicialização launch.sh para iniciar a barra:
-
-nano ~/.config/polybar/launch.sh
-
-E adicione o seguinte conteúdo:
+3. E adicione o seguinte conteúdo:
 
 #!/bin/bash
 
@@ -104,91 +124,79 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Inicia o polybar
 polybar example &
 
-Dê permissão de execução ao script:
+Pressione CTRL + O para salvar o arquivo
+Pressione Enter para confirmar o nome do arquivo
+Pressione CTRL + X para sair do nano
 
-chmod +x ~/.config/polybar/launch.sh
+4. Dê permissão de execução ao script: chmod +x ~/.config/polybar/launch.sh
 
-Salvar e sair
+9 - Reiniciar o sistema: systemctl reboot
 
-Reiniciar o sistema: systemctl reboot
+Agora podemos ver o 'GRUB' com um visual mais agradável. Em seguida, aparece a tela de login do LightDM. Note que é necessário digitar o nome do usuário. Fique tranquilo, vou ensinar como habilitar a exibição do nome do usuário, para que você só precise digitar a senha para entrar no sistema."
 
-8 - Criar os diretórios padrão do usuário
+10 - Criar os diretórios padrão do usuário: xdg-user-dirs-update
 
-Digite: xdg-user-dirs-update
+11 - Adicionar o picom, nitrogen e mate-polkit no arquivo de configuração do bspwm
 
-9 - Iniciar o picom, Nitrogen e Mate-polkit
+Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
-Entrar no arquivo bspwmrc
+Adiciona no final do arquivo:
 
-Digite: nano ~/.config/bspwm/bspwmrc
-
-Adiciona no final do arquivo: picom &
-
-Nitrogen
-
+picom &
 nitrogen --restore &
-
-Mate-polkit
-
 /usr/libexec/polkit-mate-authentication-agent-1 &
 
-Salvar e sair
+Salvar as Mudanças no Arquivo de Configuração
 
-10 - Alterar a resolução da tela
+12 - Alterar a resolução da tela
 
-Aperte `Super + Espaço` para abrir o `rofi`, digite `arandr` e pressione `Enter` para abrir o aplicativo.
+Aperte `Super + d` para abrir o `rofi`, digite `arandr` e pressione `Enter` para abrir o aplicativo.
 
-Ajustar as configurações
+1. Ajustar as configurações
 
 Use o `arandr` para configurar a resolução, rotação e disposição dos monitores de acordo com sua preferência. Após fazer os ajustes desejados, vá em Layout > Salvar como... e salve o arquivo de script em um local conveniente, como `~/.screenlayout/monitor.sh`. Recomendo usar o diretório padrão para facilitar o acesso.
 
-Tornar a configuração persistente
+2. Tornar a configuração persistente
 
-Entrar no arquivo bspwmrc
+Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
-Digite: nano ~/.config/bspwm/bspwmrc
+Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
 Adiciona no final do arquivo: ~/.screenlayout/monitor.sh &
 
-11 - Configurar o Lightdm para digitar só a senha
+13 - Configurar o Lightdm para digitar só a senha
 
 sudo nano /etc/lightdm/lightdm.conf
 
 Descomentar em 'greeter-hide-users=false' e 'greeter-show-manual-login=false para true em [Seat:*]
 
-12 - Firewall
+14 - Firewall
 
 Escolhi o "gufw"
 
 'gufw' é uma interface gráfica para o ufw (Uncomplicated Firewall), que é um firewall baseado em linha de comando para sistemas Linux.
 
-Ativar Firewall
+1. Iniciar: sudo systemctl start ufw.service
 
-Iniciar
+2. Habilitar: 'sudo systemctl enable ufw.service' e 'sudo ufw enable'
 
-Digite: sudo systemctl start ufw.service
+3. Status: sudo ufw status
 
-Habilitar
+Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
-Assim "sudo ufw enable" ou desse jeito "sudo systemctl enable ufw.service"
-
-Status
-
-sudo ufw status
-
-Entrar no arquivo bspwmrc
-
-Digite: nano ~/.config/bspwm/bspwmrc
+Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
 Adiciona no final do arquivo: gufw &
 
-13 - Montar automaticamente um CD/DVD
+15 - Montar automaticamente um CD/DVD
 
-Adicionar o udiskie para iniciar automaticamente.
+Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
-udiskie -t &
+Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
-Adicionar o modulo no arquivo de configuração do polybar
+Adicionar o udiskie para iniciar automaticamente: udiskie -t &
+
+1. Adicionar o modulo no arquivo de configuração do polybar
 
 [module/udiskie]
 type = custom/script
@@ -199,16 +207,14 @@ Depois de adicionar o módulo ao arquivo de configuração, vá até a seção o
 
 modules-right = udiskie
 
-Criar o script
+2. Criar o script: nano ~/.config/polybar/udiskie.sh
 
-nano ~/.config/polybar/udiskie.sh
-
-Adicionar no arquivo do script udiskie.sh 
+Adicionar no arquivo do script 'udiskie.sh'
 
 #!/bin/bash
 
 # Ícone para dispositivos montados
-MOUNT_ICON="📀"  # Ícone de mídia, pode ser modificado
+MOUNT_ICON=""  # Ícone de mídia, pode ser modificado
 
 # Listar dispositivos montados
 output=$(lsblk -o NAME,MOUNTPOINT | grep '/media' | awk '{print $1}' | sed "s|^|$MOUNT_ICON |")
@@ -220,12 +226,17 @@ else
     echo "$output"
 fi
 
-Dê permissão de execução ao script:
+Dê permissão de execução ao script: chmod +x ~/.config/polybar/udiskie.sh
 
-chmod +x ~/.config/polybar/udiskie.sh
+3. Ícone no Polybar: nano ~/.config/polybar/config
 
-Reiniciar a Polybar
+Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
-Reinicie a Polybar para que a barra seja atualizada com o novo script:
+[bar/example]
+font-0 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
+font-2 = Noto Sans:style=Regular:size=10;1
 
-polybar-msg cmd restart
+4. Reiniciar o Polybar
+
+Reinicie a Polybar para que a barra seja atualizada com o novo script: polybar-msg cmd restart
