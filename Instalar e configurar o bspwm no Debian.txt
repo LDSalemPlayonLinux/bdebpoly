@@ -68,8 +68,55 @@ super + shift + r
 # Desligar
 super + shift + q
         systemctl poweroff
+        
+Salvar e sair
 
-Iniciar o picom
+7 - Configurando o Polybar
+
+Crie a pasta de configuração para o Polybar:
+
+mkdir -p ~/.config/polybar
+
+Copie o arquivo de configuração de exemplo (se disponível) ou crie o seu próprio:
+
+cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config
+
+Integrando o Polybar ao BSPWM
+
+Para iniciar o Polybar automaticamente ao iniciar o bspwm, edite o arquivo ~/.config/bspwm/bspwmrc e adicione a seguinte linha ao final do arquivo:
+
+~/.config/polybar/launch.sh &
+
+Agora, crie o script de inicialização launch.sh para iniciar a barra:
+
+nano ~/.config/polybar/launch.sh
+
+E adicione o seguinte conteúdo:
+
+#!/bin/bash
+
+# Mata instâncias anteriores do polybar
+killall -q polybar
+
+# Aguarda até que as instâncias sejam encerradas
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+# Inicia o polybar
+polybar example &
+
+Dê permissão de execução ao script:
+
+chmod +x ~/.config/polybar/launch.sh
+
+Salvar e sair
+
+Reiniciar o sistema: systemctl reboot
+
+8 - Criar os diretórios padrão do usuário
+
+Digite: xdg-user-dirs-update
+
+9 - Iniciar o picom, Nitrogen e Mate-polkit
 
 Entrar no arquivo bspwmrc
 
@@ -87,7 +134,7 @@ Mate-polkit
 
 Salvar e sair
 
-7 - Alterar a resolução da tela
+10 - Alterar a resolução da tela
 
 Aperte `Super + Espaço` para abrir o `rofi`, digite `arandr` e pressione `Enter` para abrir o aplicativo.
 
@@ -103,11 +150,13 @@ Digite: nano ~/.config/bspwm/bspwmrc
 
 Adiciona no final do arquivo: ~/.screenlayout/monitor.sh &
 
-9 - Criar os diretórios padrão do usuário
+11 - Configurar o Lightdm para digitar só a senha
 
-Digite: xdg-user-dirs-update
+sudo nano /etc/lightdm/lightdm.conf
 
-10 - Firewall
+Descomentar em 'greeter-hide-users=false' e 'greeter-show-manual-login=false para true em [Seat:*]
+
+12 - Firewall
 
 Escolhi o "gufw"
 
@@ -127,17 +176,13 @@ Status
 
 sudo ufw status
 
-Parar o serviço
-
-Digite: sudo systemctl stop ufw.service
-
 Entrar no arquivo bspwmrc
 
 Digite: nano ~/.config/bspwm/bspwmrc
 
 Adiciona no final do arquivo: gufw &
 
-11 - Montar automaticamente um CD/DVD
+13 - Montar automaticamente um CD/DVD
 
 Adicionar o udiskie para iniciar automaticamente.
 
@@ -180,12 +225,3 @@ Reiniciar a Polybar
 Reinicie a Polybar para que a barra seja atualizada com o novo script:
 
 polybar-msg cmd restart
-
-Configurar o Lightdm para digitar só a senha
-
-sudo nano /etc/lightdm/lightdm.conf
-
-Descomentar em 'greeter-hide-users=false' e 'greeter-show-manual-login=false para true em [Seat:*]
-
-
-Reiniciar o sistema: systemctl reboot
