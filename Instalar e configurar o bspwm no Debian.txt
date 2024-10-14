@@ -281,26 +281,35 @@ Reinicie a Polybar para que a barra seja atualizada com o novo script: polybar-m
 
 lxappearance' é uma ferramenta de configuração para ambientes de desktop Linux, especialmente projetada para ambientes leves como o LXDE e LXQt. Ela permite personalizar a aparência do ambiente de desktop, incluindo temas, ícones e fontes.
 
-Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
+1. Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
 Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
 lxappearance --apply & #sem privilégio
 sudo lxappearance --apply & #com privilégio
 
-Configurar sudo sem senha para lxappearance
+2. Configurar sudo sem senha para lxappearance
 
-Aplique automaticamente o tema para as aplicações que abrem com privilégio
+Digite: sudo nano /etc/sudoers
 
-Digite: nano /etc/sudoers
+3. Localize a seção "User privilege specification": No arquivo sudoers, encontre a linha que diz:
 
-No arquivo que abrir, adicione a seguinte linha (substitua seu_usuario pelo seu nome de usuário):
+## User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+Adicione sua configuração logo abaixo: Logo após essa seção, adicione a linha para seu usuário específico (substitua seu_usuario pelo seu nome de usuário):
 
 seu_usuario ALL=(ALL) NOPASSWD: /usr/bin/lxappearance
+
+Isso significa que o seu usuário poderá executar o lxappearance com privilégios de superusuário sem precisar digitar a senha.
 
 Pressione CTRL + O para salvar o arquivo
 Pressione Enter para confirmar o nome do arquivo
 Pressione CTRL + X para sair do nano
+
+4. Verifique se tudo está funcionando: Agora que a permissão foi configurada, você pode testar executando o comando: sudo lxappearance
+
+Isso garantirá que o tema seja aplicado para aplicações com privilégios elevados automaticamente, sem necessidade de abrir o terminal ou fornecer a senha.
 
 18 - Som
 
