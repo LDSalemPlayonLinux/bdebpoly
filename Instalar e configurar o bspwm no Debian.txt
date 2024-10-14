@@ -36,7 +36,7 @@ Ao usar o 'less', você pode utilizar as seguintes teclas de navegação.
 
 4 - Instalação do bspwm, sxhkd, polybar e dos pacotes recomendados
 
-Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie git lxappearance papirus-icon-theme font-manager
+Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie git lxappearance papirus-icon-theme font-manager zram-config
 
 5 - Adicionar o usuário ao arquivo sudoers.
 
@@ -109,7 +109,7 @@ Pressione CTRL + O para salvar o arquivo
 Pressione Enter para confirmar o nome do arquivo
 Pressione CTRL + X para sair do nano
 
-8 - Configurando o Polybar
+8 - Configurando a Polybar
 
 Crie a pasta de configuração para o Polybar: mkdir -p ~/.config/polybar
 
@@ -144,9 +144,37 @@ Pressione CTRL + X para sair do nano
 
 Agora podemos ver o 'GRUB' com um visual mais agradável. Em seguida, aparece a tela de login do LightDM. Note que é necessário digitar o nome do usuário. Fique tranquilo, vou ensinar como habilitar a exibição do nome do usuário, para que você só precise digitar a senha para entrar no sistema."
 
-10 - Criar os diretórios padrão do usuário: xdg-user-dirs-update
+10 - Configurando a Swap em zRAM
 
-11 - Adicionar o picom, nitrogen e mate-polkit no arquivo de configuração do bspwm
+1. Alterar o tamanho da Memória Swap e o Algoritmo de Compressão
+
+Editar o arquivo init-zram-swapping: sudo nano /usr/bin/init-zram-swapping
+
+O padrão de memória é definido como "1024". Se desejar alterá-lo, ajuste para "2048".
+
+Quando vir "initialize the devices", copie o comando abaixo, pressione "Enter" e cole-o.
+
+Comando: echo zstd > /sys/block/zram0/comp_algorithm
+
+O algoritmo "zstd" se destaca como a melhor opção.
+
+Pressione CTRL + O para salvar o arquivo
+Pressione Enter para confirmar o nome do arquivo
+Pressione CTRL + X para sair do nano
+
+Para concluir as alterações, é necessário reiniciar o sistema.
+
+2. Verifique o uso do zRAM
+
+Digite: zramctl
+
+3. Visualizar a partição do zRAM
+
+Digite: cat /proc/swaps
+
+11 - Criar os diretórios padrão do usuário: xdg-user-dirs-update
+
+12 - Adicionar o picom, nitrogen e mate-polkit no arquivo de configuração do bspwm
 
 Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
@@ -158,7 +186,7 @@ nitrogen --restore &
 
 Salvar as Mudanças no Arquivo de Configuração
 
-12 - Alterar a resolução da tela
+13 - Alterar a resolução da tela
 
 Aperte `Super + d` para abrir o `rofi`, digite `arandr` e pressione `Enter` para abrir o aplicativo.
 
@@ -174,13 +202,13 @@ Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um e
 
 Adiciona no final do arquivo: ~/.screenlayout/monitor.sh &
 
-13 - Configurar o Lightdm para digitar só a senha
+14 - Configurar o Lightdm para digitar só a senha
 
 sudo nano /etc/lightdm/lightdm.conf
 
 Descomentar em 'greeter-hide-users=false' e 'greeter-show-manual-login=false para true em [Seat:*]
 
-14 - Firewall
+15 - Firewall
 
 Escolhi o "gufw"
 
@@ -198,7 +226,7 @@ Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um e
 
 Adiciona no final do arquivo: gufw &
 
-15 - Montar automaticamente um CD/DVD
+16 - Montar automaticamente um CD/DVD
 
 Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
@@ -245,11 +273,11 @@ Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um e
 font-0 = liberationmono:style=bold:pixelsize=12;1
 font-1 = fontawesome:style=regular:pixelsize=12;1
 
-4. Reiniciar o Polybar
+4. Reiniciar a Polybar
 
 Reinicie a Polybar para que a barra seja atualizada com o novo script: polybar-msg cmd restart
 
-16 - lxappearance
+17 - lxappearance
 
 lxappearance' é uma ferramenta de configuração para ambientes de desktop Linux, especialmente projetada para ambientes leves como o LXDE e LXQt. Ela permite personalizar a aparência do ambiente de desktop, incluindo temas, ícones e fontes.
 
@@ -260,7 +288,7 @@ Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um e
 ~/.gtkrc-2.0 &
 ~/.config/gtk-3.0/settings.ini &
 
-17 - Som
+18 - Som
 
 1. Instale o PipeWire e seus componentes de áudio: sudo apt install pipewire pipewire-audio-client-libraries wireplumber
 
