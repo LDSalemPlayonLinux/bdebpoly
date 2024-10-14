@@ -36,7 +36,7 @@ Ao usar o 'less', você pode utilizar as seguintes teclas de navegação.
 
 4 - Instalação do bspwm, sxhkd, polybar e dos pacotes recomendados
 
-Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie git lxappearance papirus-icon-theme font-manager zram-config
+Digite: apt install bspwm sxhkd sudo lightdm lightdm-gtk-greeter xfce4-terminal polybar picom mate-polkit nitrogen rofi thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman catfish tumbler xarchiver mousepad unrar-free p7zip mtools genisoimage wodim cabextract gnome-disk-utility gvfs gvfs-backends nfs-common arandr gufw fonts-font-awesome udiskie git lxappearance papirus-icon-theme font-manager systemd-zram-generator
 
 5 - Adicionar o usuário ao arquivo sudoers.
 
@@ -146,29 +146,31 @@ Agora podemos ver o 'GRUB' com um visual mais agradável. Em seguida, aparece a 
 
 10 - Configurando a Swap em zRAM
 
-1. Alterar o tamanho da Memória Swap e o Algoritmo de Compressão
+1. Crie ou edite o arquivo de configuração: sudo nano /etc/systemd/zram-generator.conf
 
-Editar o arquivo init-zram-swapping: sudo nano /usr/bin/init-zram-swapping
+Adicione o seguinte conteúdo:
 
-O padrão de memória é definido como "1024". Se desejar alterá-lo, ajuste para "2048".
+[zram0]
+zram-size = min (ram / 2, 2048)
+compression-algorithm = zstd
+swap-priority = 100
 
-Quando vir "initialize the devices", copie o comando abaixo, pressione "Enter" e cole-o.
 
-Comando: echo zstd > /sys/block/zram0/comp_algorithm
-
-O algoritmo "zstd" se destaca como a melhor opção.
+੶ zram-size: Define o tamanho da zRAM (swap)
+੶ compression-algorithm: Algoritmo de compressão, o 'zstd' se destaca como a melhor opção
+੶ swap-priority: Define a prioridade da zRAM no sistema de swap
 
 Pressione CTRL + O para salvar o arquivo
 Pressione Enter para confirmar o nome do arquivo
 Pressione CTRL + X para sair do nano
 
-Para concluir as alterações, é necessário reiniciar o sistema.
+2. Agora, reinicie o serviço para aplicar as alterações: sudo systemctl restart systemd-zram-setup@zram0.service
 
-2. Verifique o uso do zRAM
+3. Verifique o uso do zRAM
 
 Digite: zramctl
 
-3. Visualizar a partição do zRAM
+4. Visualizar a partição do zRAM
 
 Digite: cat /proc/swaps
 
