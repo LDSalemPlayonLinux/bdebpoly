@@ -1,0 +1,17 @@
+Instalação do VMware no Linux
+
+Acesse o site para baixar via navegador: 'https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.1/24319023/linux/core/', ou utilize o comando 'wget https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.1/24319023/linux/core/VMware-Workstation-17.6.1-24319023.x86_64.bundle.tar' para fazer o download.
+
+Instalação
+
+Entrar no diretório: cd Downloads
+Listar: ls
+Dê permissão de execução: chmod +x VMware-Workstation-17.6.1-24319023.x86_64.bundle
+Entrar como root: sudo su
+Instalar: ./VMware-Workstation-17.6.1-24319023.x86_64.bundle
+
+Se você não quiser mais usar o VMware, desinstalá-lo é fácil.
+
+Entrar como root: sudo su
+Desinstalar: vmware-installer -u vmware-workstation
+Sair do usuário root: exit
