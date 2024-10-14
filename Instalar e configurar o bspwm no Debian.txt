@@ -168,9 +168,9 @@ Pressione CTRL + X para sair do nano
 
 Reiniciar: super + shift + r
 
-3. Verifique o uso do zRAM
+3. Verificar o status do swap
 
-Digite: zramctl
+Digite: swapon --show
 
 4. Visualizar a partição do zRAM
 
