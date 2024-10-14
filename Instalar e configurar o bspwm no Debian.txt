@@ -168,13 +168,9 @@ Pressione CTRL + X para sair do nano
 
 Reiniciar: super + shift + r
 
-3. Verificar o status do swap
+3. Verificar o status do swap: sudo zramctl
 
-Digite: swapon --show
-
-4. Visualizar a partição do zRAM
-
-Digite: cat /proc/swaps
+4. Visualizar a partição do zRAM: cat /proc/swaps
 
 11 - Criar os diretórios padrão do usuário: xdg-user-dirs-update
 
