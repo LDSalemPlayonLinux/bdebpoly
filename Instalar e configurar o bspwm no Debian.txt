@@ -285,48 +285,9 @@ lxappearance' é uma ferramenta de configuração para ambientes de desktop Linu
 
 Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
-lxappearance --apply & #sem privilégio
-pkexec lxappearance --apply & #com privilégio
+lxappearance --apply &
 
-2. Passos para usar pkexec com lxappearance
-
-Ele faz parte do pacote policykit, que permite executar aplicativos gráficos com privilégios de superusuário. Você pode usar o pkexec para abrir o lxappearance e aplicar o tema para as aplicações com privilégio.
-
-Configurar pkexec para lxappearance
-
-Por padrão, o pkexec pode não estar configurado para permitir a execução do lxappearance como superusuário. Vamos criar um arquivo de política para isso.
-
-Crie o arquivo de política: Crie um arquivo de política para o lxappearance em /usr/share/polkit-1/actions/. Isso vai permitir que o lxappearance rode com o pkexec.
-
-Primeiro, abra um editor de texto como root: sudo nano /usr/share/polkit-1/actions/org.freedesktop.lxappearance.policy
-
-Adicione o conteúdo da política: No arquivo, adicione o seguinte conteúdo para permitir que o lxappearance seja executado com pkexec:
-
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
-<policyconfig>
-  <action id="org.freedesktop.lxappearance">
-    <description>Run Lxappearance as root</description>
-    <message>Authentication is required to run Lxappearance as root</message>
-    <defaults>
-      <allow_any>yes</allow_any>
-      <allow_inactive>yes</allow_inactive>
-      <allow_active>yes</allow_active>
-    </defaults>
-  </action>
-</policyconfig>
-
-Pressione CTRL + O para salvar o arquivo
-Pressione Enter para confirmar o nome do arquivo
-Pressione CTRL + X para sair do nano
-
-Executar lxappearance com pkexec:
-
-Agora que o arquivo de política foi criado, você pode usar o pkexec para abrir o lxappearance como superusuário.
-
-No terminal, execute: pkexec lxappearance
-
-Isso deve abrir o lxappearance com privilégios de superusuário e permitir que você aplique o tema para as aplicações que exigem root.
+Para aplicar o tema nas aplicações com privilégio: sudo lxappearance
 
 18 - Som
 
