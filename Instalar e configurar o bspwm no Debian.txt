@@ -151,7 +151,7 @@ Agora podemos ver o 'GRUB' com um visual mais agradável. Em seguida, aparece a 
 Adicione o seguinte conteúdo:
 
 [zram0]
-zram-size = min (ram / 2, 2048)
+zram-size = min (ram / 1, 2048)
 compression-algorithm = zstd
 swap-priority = 100
 
@@ -164,7 +164,9 @@ Pressione CTRL + O para salvar o arquivo
 Pressione Enter para confirmar o nome do arquivo
 Pressione CTRL + X para sair do nano
 
-2. Agora, reinicie o serviço para aplicar as alterações: sudo systemctl restart systemd-zram-setup@zram0.service
+2. Para concluir as alterações, é necessário reiniciar o sistema.
+
+Reiniciar: super + shift + r
 
 3. Verifique o uso do zRAM
 
