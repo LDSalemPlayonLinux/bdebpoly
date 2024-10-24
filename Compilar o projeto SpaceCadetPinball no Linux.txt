@@ -1,0 +1,29 @@
+Compilar o projeto 'SpaceCadetPinball' no Linux
+
+1 - Instalar dependências
+
+sudo apt update
+sudo apt install git cmake libsdl2-dev libsdl2-mixer-dev
+
+2 - Clonar o repositório do GitHub
+
+git clone https://github.com/k4zmu2a/SpaceCadetPinball.git
+cd SpaceCadetPinball
+
+3 - Compilar o projeto
+
+mkdir build
+cd build
+cmake ..
+make
+
+4 - Instalar no sistema
+
+sudo make install
+
+5 - Baixar e mover o Game data
+
+wget https://github.com/LDSalemPlayonLinux/bdebpoly/raw/refs/heads/master/Space%20Cadet%20Pinball%20-%20Game%20data.zip
+
+Mover: sudo mv ~/Downloads/SpaceCadetPinball /usr/local/share/
+
