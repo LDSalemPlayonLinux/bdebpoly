@@ -119,24 +119,9 @@ cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config
 
 1. Para iniciar o Polybar automaticamente ao iniciar o bspwm, edite o arquivo ~/.config/bspwm/bspwmrc e adicione a seguinte linha ao final do arquivo: ~/.config/polybar/launch.sh &
 
-2. Agora, crie o script de inicialização 'launch.sh' para iniciar a barra: nano ~/.config/polybar/launch.sh
+2. Agora, precia copiar o script de inicialização para o diretório ~/.config/polybar/
 
-3. E adicione o seguinte conteúdo:
-
-#!/bin/bash
-
-# Mata instâncias anteriores do polybar
-killall -q polybar
-
-# Aguarda até que as instâncias sejam encerradas
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-
-# Inicia o polybar
-polybar example &
-
-Pressione CTRL + O para salvar o arquivo
-Pressione Enter para confirmar o nome do arquivo
-Pressione CTRL + X para sair do nano
+cp ~/bdebpoly/launch.sh ~/.config/polybar/launch.sh
 
 4. Dê permissão de execução ao script: chmod +x ~/.config/polybar/launch.sh
 
