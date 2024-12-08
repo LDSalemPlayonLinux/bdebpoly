@@ -330,11 +330,11 @@ Adicionar o Repositório do Google Chrome
 
 1. Baixe e adicione a chave GPG do Google:
 
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+wget -q -O- https://dl.google.com/linux/linux_signing_key.pub | sudo tee /usr/share/keyrings/google-chrome-keyring.gpg > /dev/null
    
 2. Adicione o repositório do Google Chrome:
 
-echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
    
 3. Atualize os pacotes e instale o Google Chrome:
 
