@@ -340,3 +340,12 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome-keyring.gpg] h
 
 sudo apt update
 sudo apt install google-chrome-stable
+
+Remover chave e repositório
+
+sudo rm /etc/apt/sources.list.d/google-chrome.list
+
+sudo rm /usr/share/keyrings/google-chrome-keyring.gpg
+
+sudo rm /etc/apt/trusted.gpg
+
