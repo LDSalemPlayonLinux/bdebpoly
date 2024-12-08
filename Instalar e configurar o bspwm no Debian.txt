@@ -324,28 +324,3 @@ Pin-Priority: 1000
 
 sudo apt update && sudo apt install firefox-l10n-pt-br
 
-Google Chrome
-
-Adicionar o Repositório do Google Chrome 
-
-1. Baixe e adicione a chave GPG do Google:
-
-wget -q -O- https://dl.google.com/linux/linux_signing_key.pub | sudo tee /usr/share/keyrings/google-chrome-keyring.gpg > /dev/null
-   
-2. Adicione o repositório do Google Chrome:
-
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-   
-3. Atualize os pacotes e instale o Google Chrome:
-
-sudo apt update
-sudo apt install google-chrome-stable
-
-Remover chave e repositório
-
-sudo rm /etc/apt/sources.list.d/google-chrome.list
-
-sudo rm /usr/share/keyrings/google-chrome-keyring.gpg
-
-sudo rm /etc/apt/trusted.gpg
-
