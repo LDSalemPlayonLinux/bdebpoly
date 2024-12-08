@@ -287,3 +287,56 @@ Para aplicar o tema nas aplicações com privilégio: sudo lxappearance
 Reiniciar o sistema
 
 O som funcionando perfeitamente!
+
+19 - Navegadores
+
+Instale o suporte HTTPS para os repositórios:
+
+sudo apt install apt-transport-https curl
+
+Firefox
+
+1. Crie um diretório para armazenar chaves do repositório APT, se ainda não existir:
+
+sudo install -d -m 0755 /etc/apt/keyrings
+
+2. Importe a chave de assinatura do repositório APT da Mozilla:
+
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+3. O fingerprint deve ser 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3. Você pode verificar com o seguinte comando:
+
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nO fingerprint da chave corresponde ("$0").\n"; else print "\nFalha na verificação: o fingerprint ("$0") não corresponde ao esperado.\n"}'
+
+4. Depois adicione o repositório APT da Mozilla à sua lista de origens:
+
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+
+5. Configure o APT para dar prioridade a pacotes do repositório da Mozilla:
+
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
+
+6. Atualize a lista de pacotes e instale o pacote .deb do Firefox:
+
+sudo apt update && sudo apt install firefox-l10n-pt-br
+
+Google Chrome
+
+Adicionar o Repositório do Google Chrome 
+
+1. Baixe e adicione a chave GPG do Google:
+
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+   
+2. Adicione o repositório do Google Chrome:
+
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+   
+3. Atualize os pacotes e instale o Google Chrome:
+
+sudo apt update
+sudo apt install google-chrome-stable
