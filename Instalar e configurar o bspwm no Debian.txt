@@ -247,15 +247,29 @@ font-1 = fontawesome:style=regular:pixelsize=12;1
 
 Reinicie a Polybar para que a barra seja atualizada com o novo script: polybar-msg cmd restart
 
-17 - Bluetooth
+17 - Som
+
+1. Instale o PipeWire e seus componentes de áudio: sudo apt install pipewire pipewire-audio-client-libraries wireplumber
+
+2. Habilite o PipeWire para gerenciar o áudio: systemctl --user enable --now pipewire pipewire-pulse wireplumber
+
+3. Verifique o status do PipeWire: systemctl --user status pipewire
+
+4. Ajuste o volume e os dispositivos de áudio: sudo apt install pavucontrol
+
+Reiniciar o sistema
+
+O som funcionando perfeitamente!
+
+18 - Bluetooth
 
 1. Instalar os pacotes necessários
 
-sudo apt install bluetooth bluez blueman pulseaudio-module-bluetooth
+sudo apt install bluetooth bluez blueman libspa-bluetooth
 
 bluetooth e bluez: Gerenciam o funcionamento do Bluetooth no sistema.
 blueman: Fornece uma interface gráfica para o Bluetooth.
-pulseaudio-module-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
+libspa-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
 
 2. Ativar e habilitar o serviço Bluetooth
 
@@ -306,7 +320,7 @@ Ligue o Bluetooth clicando no ícone da Polybar ou digitando no terminal: blueto
 
 Certifique-se de que o applet do Blueman está ativo. Ele mostrará notificações interativas para emparelhamento e transferência de arquivos.
 
-18 - Navegadores
+19 - Navegadores
 
 Instale o suporte HTTPS para os repositórios:
 
@@ -360,20 +374,6 @@ Se quiser usar o dpkg, fique à vontade. Vai ter que resolver as dependências m
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt --fix-broken install
-
-19 - Som
-
-1. Instale o PipeWire e seus componentes de áudio: sudo apt install pipewire pipewire-audio-client-libraries wireplumber
-
-2. Habilite o PipeWire para gerenciar o áudio: systemctl --user enable --now pipewire pipewire-pulse wireplumber
-
-3. Verifique o status do PipeWire: systemctl --user status pipewire
-
-4. Ajuste o volume e os dispositivos de áudio: sudo apt install pavucontrol
-
-Reiniciar o sistema
-
-O som funcionando perfeitamente!
 
 20 - lxappearance
 
