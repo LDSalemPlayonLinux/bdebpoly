@@ -267,6 +267,10 @@ O som funcionando perfeitamente!
 
 sudo apt install bluetooth bluez blueman libspa-0.2-bluetooth
 
+Atheros: sudo apt install firmware-linux firmware-atheros firmware-iwlwifi
+Realtek: sudo apt install firmware-linux firmware-realtek firmware-iwlwifi
+
+
 bluetooth e bluez: Gerenciam o funcionamento do Bluetooth no sistema.
 blueman: Fornece uma interface gráfica para o Bluetooth.
 libspa-0.2-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
@@ -310,7 +314,7 @@ Adicione o seguinte comando no arquivo bspwmrc para iniciar o Blueman ao entrar 
 
 Esse comando inicializa o applet do Blueman, que gerencia conexões Bluetooth e exibe notificações interativas para emparelhamento e transferência de arquivos.
 
-Salve as alterações no arquivo bspwmrc e reinicie o sistema ou apenas o BSPWM: bspc wm --restart
+Salve as alterações no arquivo bspwmrc e reinicie o sistema.
 
 Ao emparelhar um dispositivo ou receber um arquivo, uma janela será exibida com a opção de aceitar ou rejeitar a solicitação.
 
