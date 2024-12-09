@@ -265,11 +265,11 @@ O som funcionando perfeitamente!
 
 1. Instalar os pacotes necessários
 
-sudo apt install bluetooth bluez blueman libspa-bluetooth
+sudo apt install bluetooth bluez blueman libspa-0.2-bluetooth
 
 bluetooth e bluez: Gerenciam o funcionamento do Bluetooth no sistema.
 blueman: Fornece uma interface gráfica para o Bluetooth.
-libspa-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
+libspa-0.2-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
 
 2. Ativar e habilitar o serviço Bluetooth
 
