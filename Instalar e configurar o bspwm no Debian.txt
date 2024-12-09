@@ -213,13 +213,19 @@ Adiciona no final do arquivo: gufw &
 
 16 - Montar automaticamente um CD/DVD
 
-Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
+1. Agora, precia copiar o script para o diretório ~/.config/polybar/
+
+cp ~/bdebpoly/udiskie.sh ~/.config/polybar/udiskie.sh
+
+Dê permissão de execução ao script: chmod +x ~/.config/polybar/udiskie.sh
+
+2. Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
 
 Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
 Adicionar o udiskie para iniciar automaticamente: udiskie -t &
 
-1. Adicionar o modulo no arquivo de configuração do polybar
+3. Adicionar o modulo no arquivo de configuração do polybar
 
 [module/udiskie]
 type = custom/script
@@ -230,35 +236,14 @@ Depois de adicionar o módulo ao arquivo de configuração, vá até a seção o
 
 modules-right = udiskie
 
-2. Criar o script: nano ~/.config/polybar/udiskie.sh
-
-Adicionar no arquivo do script 'udiskie.sh'
-
-#!/bin/bash
-
-# Ícone para dispositivos montados
-MOUNT_ICON=""  # Ícone de mídia, pode ser modificado
-
-# Listar dispositivos montados
-output=$(lsblk -o NAME,MOUNTPOINT | grep '/media' | awk '{print $1}' | sed "s|^|$MOUNT_ICON |")
-
-# Verificar se há dispositivos montados
-if [ -z "$output" ]; then
-    echo "Nenhum dispositivo montado"
-else
-    echo "$output"
-fi
-
-Dê permissão de execução ao script: chmod +x ~/.config/polybar/udiskie.sh
-
-3. Ícone no Polybar: nano ~/.config/polybar/config
+4. Ícone no Polybar: nano ~/.config/polybar/config
 
 Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
 
 font-0 = liberationmono:style=bold:pixelsize=12;1
 font-1 = fontawesome:style=regular:pixelsize=12;1
 
-4. Reiniciar a Polybar
+5. Reiniciar a Polybar
 
 Reinicie a Polybar para que a barra seja atualizada com o novo script: polybar-msg cmd restart
 
