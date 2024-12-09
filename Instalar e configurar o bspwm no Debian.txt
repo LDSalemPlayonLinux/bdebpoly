@@ -247,33 +247,66 @@ font-1 = fontawesome:style=regular:pixelsize=12;1
 
 Reinicie a Polybar para que a barra seja atualizada com o novo script: polybar-msg cmd restart
 
-17 - lxappearance
+17 - Bluetooth
 
-lxappearance' é uma ferramenta de configuração para ambientes de desktop Linux, especialmente projetada para ambientes leves como o LXDE e LXQt. Ela permite personalizar a aparência do ambiente de desktop, incluindo temas, ícones e fontes.
+1. Instalar os pacotes necessários
 
-1. Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
+sudo apt install bluetooth bluez blueman pulseaudio-module-bluetooth
 
-Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
+bluetooth e bluez: Gerenciam o funcionamento do Bluetooth no sistema.
+blueman: Fornece uma interface gráfica para o Bluetooth.
+pulseaudio-module-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
 
-lxappearance --apply &
+2. Ativar e habilitar o serviço Bluetooth
 
-Para aplicar o tema nas aplicações com privilégio: sudo lxappearance
+sudo systemctl enable bluetooth
+sudo systemctl start bluetooth
 
-18 - Som
+3. Verifique se o serviço está ativo
 
-1. Instale o PipeWire e seus componentes de áudio: sudo apt install pipewire pipewire-audio-client-libraries wireplumber
+systemctl status bluetooth
 
-2. Habilite o PipeWire para gerenciar o áudio: systemctl --user enable --now pipewire pipewire-pulse wireplumber
+4. Configurar o ícone de Bluetooth na Polybar
 
-3. Verifique o status do PipeWire: systemctl --user status pipewire
+Criar o módulo de Bluetooth na configuração da Polybar Abra o arquivo de configuração da Polybar localizado em ~/.config/polybar/config e adicione o seguinte módulo:
 
-4. Ajuste o volume e os dispositivos de áudio: sudo apt install pavucontrol
+[module/bluetooth]
+type = custom/script
+exec = bluetoothctl show | grep -q "Powered: yes" && echo " On" || echo " Off"
+interval = 5
+click-left = bluetoothctl power on
+click-right = bluetoothctl power off
 
-Reiniciar o sistema
+exec: Verifica se o Bluetooth está ligado e exibe "On" ou "Off".
+click-left e click-right: Ativam e desativam o Bluetooth clicando no ícone.
 
-O som funcionando perfeitamente!
+5. Adicionar o módulo na Polybar Na seção modules-right
 
-19 - Navegadores
+modules-right = bluetooth ...
+
+6. Salvar e reiniciar a Polybar Após salvar o arquivo, reinicie a Polybar
+
+polybar-msg cmd restart
+
+7. Configurar a confirmação de solicitações de emparelhamento ou recebimento de arquivos
+
+Para exibir uma janela de confirmação ao emparelhar dispositivos ou receber arquivos, você usará o Blueman.
+
+Adicione o seguinte comando no arquivo bspwmrc para iniciar o Blueman ao entrar no sistema: blueman-applet &
+
+Esse comando inicializa o applet do Blueman, que gerencia conexões Bluetooth e exibe notificações interativas para emparelhamento e transferência de arquivos.
+
+Salve as alterações no arquivo bspwmrc e reinicie o sistema ou apenas o BSPWM: bspc wm --restart
+
+Ao emparelhar um dispositivo ou receber um arquivo, uma janela será exibida com a opção de aceitar ou rejeitar a solicitação.
+
+8. Testar a configuração
+
+Ligue o Bluetooth clicando no ícone da Polybar ou digitando no terminal: bluetoothctl power on
+
+Certifique-se de que o applet do Blueman está ativo. Ele mostrará notificações interativas para emparelhamento e transferência de arquivos.
+
+18 - Navegadores
 
 Instale o suporte HTTPS para os repositórios:
 
@@ -327,3 +360,29 @@ Se quiser usar o dpkg, fique à vontade. Vai ter que resolver as dependências m
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt --fix-broken install
+
+19 - Som
+
+1. Instale o PipeWire e seus componentes de áudio: sudo apt install pipewire pipewire-audio-client-libraries wireplumber
+
+2. Habilite o PipeWire para gerenciar o áudio: systemctl --user enable --now pipewire pipewire-pulse wireplumber
+
+3. Verifique o status do PipeWire: systemctl --user status pipewire
+
+4. Ajuste o volume e os dispositivos de áudio: sudo apt install pavucontrol
+
+Reiniciar o sistema
+
+O som funcionando perfeitamente!
+
+20 - lxappearance
+
+lxappearance' é uma ferramenta de configuração para ambientes de desktop Linux, especialmente projetada para ambientes leves como o LXDE e LXQt. Ela permite personalizar a aparência do ambiente de desktop, incluindo temas, ícones e fontes.
+
+1. Editar o arquivo bspwmrc: nano ~/.config/bspwm/bspwmrc
+
+Você pode usar o editor de texto 'nano', que é um editor via terminal, ou um editor gráfico como 'mousepad', do Xfce.
+
+lxappearance --apply &
+
+Para aplicar o tema nas aplicações com privilégio: sudo lxappearance
