@@ -309,3 +309,21 @@ Pin-Priority: 1000
 
 sudo apt update && sudo apt install firefox-l10n-pt-br
 
+Google Chrome
+
+1. Baixar
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+2. Instalar o Gdebi
+
+sudo apt install gdebi
+
+3. Instalar Chrome com Gdebi
+
+sudo gdebi google-chrome-stable_current_amd64.deb
+
+Se quiser usar o dpkg, fique à vontade. Vai ter que resolver as dependências manualmente. Diferente do Gdebi que ele instala as dependências automaticamente.
+
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt --fix-broken install
