@@ -261,55 +261,7 @@ Reiniciar o sistema
 
 O som funcionando perfeitamente!
 
-18 - Bluetooth
-
-1. Instalar os pacotes necessários
-
-sudo apt install bluetooth bluezlibspa-0.2-bluetooth
-
-bluetooth e bluez: Gerenciam o funcionamento do Bluetooth no sistema.
-libspa-0.2-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
-
-2. Ativar e habilitar o serviço Bluetooth
-
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
-
-3. Verifique se o serviço está ativo
-
-systemctl status bluetooth
-
-4. Configurar o ícone de Bluetooth na Polybar
-
-Criar o módulo de Bluetooth na configuração da Polybar Abra o arquivo de configuração da Polybar localizado em ~/.config/polybar/config e adicione o seguinte módulo:
-
-[module/bluetooth]
-type = custom/script
-exec = bluetoothctl show | grep -q "Powered: yes" && echo " On" || echo " Off"
-interval = 5
-click-left = bluetoothctl power on
-click-right = bluetoothctl power off
-
-exec: Verifica se o Bluetooth está ligado e exibe "On" ou "Off".
-click-left e click-right: Ativam e desativam o Bluetooth clicando no ícone.
-
-5. Adicionar o módulo na Polybar Na seção modules-right
-
-modules-right = bluetooth ...
-
-6. Salvar e reiniciar a Polybar Após salvar o arquivo, reinicie a Polybar
-
-polybar-msg cmd restart
-
-Salve as alterações no arquivo bspwmrc e reinicie o sistema.
-
-7. Testar a configuração
-
-Ligue o Bluetooth clicando no ícone da Polybar ou digitando no terminal: bluetoothctl power on
-
-Certifique-se de que o applet do Blueman está ativo. Ele mostrará notificações interativas para emparelhamento e transferência de arquivos.
-
-19 - Navegadores
+18 - Navegadores
 
 Instale o suporte HTTPS para os repositórios:
 
@@ -364,7 +316,7 @@ Se quiser usar o dpkg, fique à vontade. Vai ter que resolver as dependências m
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt --fix-broken install
 
-20 - lxappearance
+19 - lxappearance
 
 lxappearance' é uma ferramenta de configuração para ambientes de desktop Linux, especialmente projetada para ambientes leves como o LXDE e LXQt. Ela permite personalizar a aparência do ambiente de desktop, incluindo temas, ícones e fontes.
 
