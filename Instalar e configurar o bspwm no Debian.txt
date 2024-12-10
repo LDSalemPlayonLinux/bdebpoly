@@ -293,9 +293,11 @@ Pin: origin packages.mozilla.org
 Pin-Priority: 1000
 ' | sudo tee /etc/apt/preferences.d/mozilla
 
-6. Atualize a lista de pacotes e instale o pacote .deb do Firefox:
+6. Atualize a lista de pacotes e instale o Firefox:
 
-sudo apt update && sudo apt install firefox-l10n-pt-br
+sudo apt update
+
+sudo apt install firefox-l10n-pt-br
 
 Google Chrome
 
