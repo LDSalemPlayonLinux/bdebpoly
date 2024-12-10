@@ -265,14 +265,9 @@ O som funcionando perfeitamente!
 
 1. Instalar os pacotes necessários
 
-sudo apt install bluetooth bluez blueman libspa-0.2-bluetooth
-
-Atheros: sudo apt install firmware-linux firmware-atheros firmware-iwlwifi
-Realtek: sudo apt install firmware-linux firmware-realtek firmware-iwlwifi
-
+sudo apt install bluetooth bluezlibspa-0.2-bluetooth
 
 bluetooth e bluez: Gerenciam o funcionamento do Bluetooth no sistema.
-blueman: Fornece uma interface gráfica para o Bluetooth.
 libspa-0.2-bluetooth: Necessário para conexões de áudio Bluetooth, como fones de ouvido.
 
 2. Ativar e habilitar o serviço Bluetooth
@@ -306,19 +301,9 @@ modules-right = bluetooth ...
 
 polybar-msg cmd restart
 
-7. Configurar a confirmação de solicitações de emparelhamento ou recebimento de arquivos
-
-Para exibir uma janela de confirmação ao emparelhar dispositivos ou receber arquivos, você usará o Blueman.
-
-Adicione o seguinte comando no arquivo bspwmrc para iniciar o Blueman ao entrar no sistema: blueman-applet &
-
-Esse comando inicializa o applet do Blueman, que gerencia conexões Bluetooth e exibe notificações interativas para emparelhamento e transferência de arquivos.
-
 Salve as alterações no arquivo bspwmrc e reinicie o sistema.
 
-Ao emparelhar um dispositivo ou receber um arquivo, uma janela será exibida com a opção de aceitar ou rejeitar a solicitação.
-
-8. Testar a configuração
+7. Testar a configuração
 
 Ligue o Bluetooth clicando no ícone da Polybar ou digitando no terminal: bluetoothctl power on
 
