@@ -1,0 +1,48 @@
+Guia para Configuração do zRAM no Ubuntu, Linux Mint e Zorin OS
+
+1. Instalar o zram-config
+
+Abra o terminal e execute o comando abaixo para instalar o pacote: sudo apt install zram-config
+
+2. Alterar o Tamanho da Memória Swap e o Algoritmo de Compressão
+
+1 - Editar o arquivo de configuração do zRAM: No terminal,
+abra o arquivo init-zram-swapping para edição: sudo nano /usr/bin/init-zram-swapping
+
+2 - Alterar o tamanho da memória swap:
+
+- Localize a linha onde o tamanho da memória é definido (o padrão é 1024).
+- Altere o valor para 2048.
+
+Observação: Ajustar para 2048 fará com que o tamanho da memória swap
+fique exatamente igual ao tamanho da memória RAM.
+
+3 - Modificar o algoritmo de compressão:
+
+Após encontrar a seção com "initialize the devices",
+insira o comando abaixo para definir o algoritmo como zstd:
+
+echo zstd > /sys/block/zram0/comp_algorithm
+
+O algoritmo zstd oferece excelente desempenho e compressão eficiente.
+
+4 - Salvar e sair do editor:
+
+Pressione Ctrl + O para salvar as alterações.
+
+Pressione Ctrl + X para sair do editor nano.
+
+3. Reiniciar o Sistema
+
+Para aplicar as alterações realizadas, reinicie o sistema: sudo reboot
+
+4. Verificar o Uso do zRAM
+
+Após o reinício, use os comandos abaixo para verificar o status do zRAM:
+
+Verificar as partições do zRAM: zramctl
+
+Visualizar a partição de swap ativa: cat /proc/swaps
+
+Seguindo esses passos, o zRAM estará configurado corretamente com o tamanho de swap ajustado
+e o algoritmo de compressão otimizado no Ubuntu, Linux Mint ou Zorin OS.
