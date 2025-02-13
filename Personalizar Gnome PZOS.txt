@@ -4,7 +4,7 @@ Para deixar o Gnome no Debian 12 parecido com o Zorin OS, você pode seguir este
 
 1 - Instalar temas e ícones do Zorin OS
 
-O Zorin usa o Zorin GTK Theme e o Zorin Icon Theme. Você pode baixá-los manualmente ou instalar pacotes similares.
+Antes, precisa instalar a engine murrine: sudo apt install gtk-murrine-engine gtk2-engines-murrine
 
 Baixar os temas do Zorin OS
 
