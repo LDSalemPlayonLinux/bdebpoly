@@ -1,0 +1,80 @@
+Personalizar Gnome no Debian
+
+Para deixar o Gnome no Debian 12 parecido com o Zorin OS, você pode seguir estes passos:
+
+1 - Instalar temas e ícones do Zorin OS
+
+O Zorin usa o Zorin GTK Theme e o Zorin Icon Theme. Você pode baixá-los manualmente ou instalar pacotes similares.
+
+Baixar os temas do Zorin OS
+
+Baixe os temas da seguinte forma:
+
+Ícones: git clone https://github.com/ZorinOS/zorin-icon-themes.git
+
+Temas: git clone https://github.com/ZorinOS/zorin-desktop-themes.git
+
+Depois de baixar os arquivos, extraia-os e mova para as pastas corretas:
+
+sudo mv zorin-icon-themes /usr/share/icons/
+
+sudo mv zorin-desktop-themes /usr/share/themes/
+
+Após mover os arquivos, entre nos diretórios 'zorin-desktop-themes' e 'zorin-icon-themes'. Veja que ambos possuem os diretórios 'debian' e '.git'. Para removê-los, use o seguinte comando: sudo rm -r debian .git
+
+Agora, você pode ativar os temas usando o GNOME Tweaks (Ajustes do GNOME).
+
+Caso o GNOME Tweaks não esteja instalado, digite: sudo apt install gnome-tweaks
+
+2 -  Instalar e ativar a extensão "Dash to Panel"
+
+O Zorin OS usa um painel inferior parecido com o Windows. Para isso, instale o Dash to Panel: 
+
+sudo apt install gnome-shell-extension-dash-to-panel
+
+Depois, ative a extensão no GNOME Tweaks e configure para ficar semelhante ao Zorin.
+
+3 - Instalar a fonte do Zorin OS
+
+O Zorin OS usa a fonte Roboto. Instale com:
+
+sudo apt install fonts-roboto
+
+Depois, vá ao GNOME Tweaks > Aparência > Fonte e altere para Roboto Regular.
+
+4 - Alterar o papel de parede
+
+Baixe o wallpaper oficial do Zorin OS e aplique:
+
+https://zorinos.com/downloads/
+
+5 - Configurar o layout do GNOME
+
+No GNOME Tweaks, faça estas alterações:
+
+1. Aparência
+
+Tema GTK: Zorin-Blue-Dark
+Ícones: Zorin
+Cursor: Zorin
+
+2. Extensões
+
+Ative o "Dash to Panel"
+
+3. Teclas e Mouse
+
+Ative "Tap to Click" no touchpad, se desejar
+
+6 - Instalar o Arc Menu
+
+O Arc Menu adiciona um menu ao estilo do Zorin OS. Instale com: sudo apt install gnome-shell-extension-arc-menu
+
+Depois, ative pelo GNOME Tweaks em Extensões.
+
+Configurar o Arc Menu para parecer o Zorin OS
+
+1. Clique com o botão direito no ícone do menu e vá em Configurações.
+2. Em Estilo do Layout, escolha Zorin OS.
+
+Agora seu menu estará bem próximo do original do Zorin!
