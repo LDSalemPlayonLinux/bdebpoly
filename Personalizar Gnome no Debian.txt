@@ -23,15 +23,17 @@ sudo mv MacOS-Pixel-vr5 /usr/share/icons/
 
 Tema
 
+Antes de mover o diretório 'Tokyonight-Dark', entre nele e mova o diretório 'gtk-4.0' para o diretório 'Downloads'.
+
+Para aplicativos GTK4, é necessário apenas mover os arquivos 'assets', 'gtk.css' e 'gtk-dark.css' para o caminho ~/.config/gtk-4.0, e, se notar que o tema não foi aplicado, basta fechar e reabrir o aplicativo.
+
+mv assets gtk.css gtk-dark.css thumbnail.png ~/.config/gtk-4.0/
+
 sudo mv Tokyonight-Dark Tokyonight-Dark-hdpi Tokyonight-Dark-xhdpi /usr/share/themes/
 
 Gnome Shell
 
 sudo mv Tokyonight-Dark-B-GS /usr/share/themes/
-
-Para aplicativos GTK4, é necessário apenas mover os arquivos 'assets', 'gtk.css' e 'gtk-dark.css' para o caminho ~/.config/gtk-4.0, e, se notar que o tema não foi aplicado, basta fechar e reabrir o aplicativo.
-
-mv assets gtk.css gtk-dark.css thumbnail.png ~/.config/gtk-4.0/
 
 2 - User Themes
 
@@ -47,7 +49,9 @@ Para ter um painel inferior parecido com o Windows. Para isso, instale o Dash to
 
 sudo apt install gnome-shell-extension-dash-to-panel
 
-Depois, ative a extensão no GNOME Tweaks e configure para ficar semelhante ao Windows ou macOS.
+Depois, ative a extensão em 'Extensões' e configure-a para ficar semelhante ao Windows.
+
+Recomendo encerrar a sessão para que o Dash to Panel apareça em 'Extensões'.
 
 4 - Instalar fonte
 
@@ -70,7 +74,7 @@ No GNOME Tweaks, faça estas alterações:
 Tema: Tokyonight-Dark
 Ícones: Tokyonight-Light
 Cursor: MacOS-Pixel-vr5
-Shell: Tokyonight-Dark-B-GS
+Shell: Tokyonight-Dark
 
 2. Extensões
 
@@ -83,5 +87,7 @@ Ative "Tap to Click" no touchpad, se desejar
 6 - Instalar o Arc Menu
 
 sudo apt install gnome-shell-extension-arc-menu
+
+Recomendo encerrar a sessão para que o Arc Menu apareça em 'Extensões'.
 
 Depois, ative pelo GNOME Tweaks em Extensões.
