@@ -1,0 +1,87 @@
+Personalizar Gnome no Debian
+
+1 - Instalar tema, cursor e ícones
+
+Antes de instalar os temas, certifique-se de instalar os seguintes pacotes necessários: sassc, murrine-engine e gnome-themes-extra para a renderização correta dos temas.
+
+sudo apt install gnome-themes-extra gtk2-engines-murrine sassc
+
+Tokyo Night GTK Theme: https://www.pling.com/p/1681315/
+Tokyo Night Gnome Shell Themes: https://www.gnome-look.org/p/1681470
+Tokyo Night Icon Themes: https://www.pling.com/p/1681475/
+Cursor: https://www.gnome-look.org/p/2042592
+
+Depois de baixar os arquivos, extraia-os e mova para as pastas corretas:
+
+Icone
+
+sudo mv Tokyonight-Light /usr/share/icons/
+
+Cursor
+
+sudo mv MacOS-Pixel-vr5 /usr/share/icons/
+
+Tema
+
+sudo mv Tokyonight-Dark Tokyonight-Dark-hdpi Tokyonight-Dark-xhdpi /usr/share/themes/
+
+Gnome Shell
+
+sudo mv Tokyonight-Dark-B-GS /usr/share/themes/
+
+Para aplicativos GTK4, é necessário apenas mover os arquivos 'assets', 'gtk.css' e 'gtk-dark.css' para o caminho ~/.config/gtk-4.0, e, se notar que o tema não foi aplicado, basta fechar e reabrir o aplicativo.
+
+mv assets gtk.css gtk-dark.css thumbnail.png ~/.config/gtk-4.0/
+
+2 - User Themes
+
+Para alterar o Shell, é necessário ativar a opção 'User Themes'. Em outras distros com GNOME, é preciso instalar o pacote 'gnome-shell-extension-prefs'. No Debian, o aplicativo 'Extensões' já vem instalado, permitindo ativar a opção 'User Themes' diretamente.
+
+Agora, você pode ativar os temas usando o GNOME Tweaks (Ajustes do GNOME).
+
+Caso o GNOME Tweaks não esteja instalado, digite: sudo apt install gnome-tweaks
+
+3 -  Instalar e ativar a extensão "Dash to Panel"
+
+Para ter um painel inferior parecido com o Windows. Para isso, instale o Dash to Panel: 
+
+sudo apt install gnome-shell-extension-dash-to-panel
+
+Depois, ative a extensão no GNOME Tweaks e configure para ficar semelhante ao Windows ou macOS.
+
+4 - Instalar fonte
+
+sudo apt install fonts-roboto
+
+Depois, vá ao GNOME Tweaks > Aparência > Fonte e altere para Roboto Regular.
+
+5 - Alterar o papel de parede
+
+Baixe o wallpaper macOS Catalina
+
+https://www.gnome-look.org/p/1362975/
+
+5 - Configurar o layout do GNOME
+
+No GNOME Tweaks, faça estas alterações:
+
+1. Aparência
+
+Tema: Tokyonight-Dark
+Ícones: Tokyonight-Light
+Cursor: MacOS-Pixel-vr5
+Shell: Tokyonight-Dark-B-GS
+
+2. Extensões
+
+Ative o "Dash to Panel"
+
+3. Teclas e Mouse
+
+Ative "Tap to Click" no touchpad, se desejar
+
+6 - Instalar o Arc Menu
+
+sudo apt install gnome-shell-extension-arc-menu
+
+Depois, ative pelo GNOME Tweaks em Extensões.
