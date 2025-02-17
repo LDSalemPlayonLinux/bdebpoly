@@ -43,6 +43,23 @@ Agora, você pode ativar os temas usando o GNOME Tweaks (Ajustes do GNOME).
 
 Caso o GNOME Tweaks não esteja instalado, digite: sudo apt install gnome-tweaks
 
+1. Aparência
+
+Tema: Tokyonight-Dark
+Ícones: Tokyonight-Light
+Cursor: MacOS-Pixel-vr5
+Shell: Tokyonight-Dark
+
+2. Maximizar e Minimizar
+
+Barras de título da janela e ative Maximizar e Minimizar
+
+3. Instalar fonte
+
+sudo apt install fonts-roboto
+
+Fonte e altere para Roboto Regular.
+
 3 -  Instalar e ativar a extensão "Dash to Panel"
 
 Para ter um painel inferior parecido com o Windows. Para isso, instale o Dash to Panel: 
@@ -51,36 +68,16 @@ sudo apt install gnome-shell-extension-dash-to-panel
 
 Depois, ative a extensão em 'Extensões' e configure-a para ficar semelhante ao Windows.
 
-Recomendo encerrar a sessão para que o Dash to Panel apareça em 'Extensões'.
+Reinicie o GNOME Shell pressionando Alt + F2, digitando r e pressionando Enter,
+ou saia e entre novamente se estiver em uma sessão Wayland.
 
-4 - Instalar fonte
-
-sudo apt install fonts-roboto
-
-Depois, vá ao GNOME Tweaks > Aparência > Fonte e altere para Roboto Regular.
-
-5 - Alterar o papel de parede
+4 - Alterar o papel de parede
 
 Baixe o wallpaper macOS Catalina
 
 https://www.gnome-look.org/p/1362975/
 
-5 - Configurar o layout do GNOME
-
-No GNOME Tweaks, faça estas alterações:
-
-1. Aparência
-
-Tema: Tokyonight-Dark
-Ícones: Tokyonight-Light
-Cursor: MacOS-Pixel-vr5
-Shell: Tokyonight-Dark
-
-2. Extensões
-
-Ative o "Dash to Panel"
-
-6 - Instalar o Arc Menu
+5 - Instalar o Arc Menu
 
 Dependências: sudo apt install make libgettextpo-dev gettext
 
