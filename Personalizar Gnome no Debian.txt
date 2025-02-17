@@ -80,14 +80,31 @@ Shell: Tokyonight-Dark
 
 Ative o "Dash to Panel"
 
-3. Teclas e Mouse
-
-Ative "Tap to Click" no touchpad, se desejar
-
 6 - Instalar o Arc Menu
 
-sudo apt install gnome-shell-extension-arc-menu
+Dependências: sudo apt install make libgettextpo-dev gettext
 
-Recomendo encerrar a sessão para que o Arc Menu apareça em 'Extensões'.
+Instalar a partir dos arquivos fonte
 
-Depois, ative pelo GNOME Tweaks em Extensões.
+Baixe a branch correta do ArcMenu para a versão do seu GNOME Shell abaixo:
+
+Master branch (GNOME 45/46/47/48)
+
+wget https://gitlab.com/arcmenu/ArcMenu/-/archive/master/ArcMenu-master.zip
+
+gnome-42/43/44 branch (GNOME 42, 43, 44)
+
+wget https://gitlab.com/arcmenu/ArcMenu/-/archive/gnome-42/43/44/ArcMenu-gnome-42-43-44.zip
+
+gnome-40/41 branch (GNOME 40 and 41)
+
+wget https://gitlab.com/arcmenu/ArcMenu/-/archive/gnome-40/41/ArcMenu-gnome-40-41.zip
+
+gnome-3.36/3.38 branch
+
+wget https://gitlab.com/arcmenu/ArcMenu/-/archive/gnome-3.36/3.38/ArcMenu-gnome-3.36-3.38.zip
+
+Abra o terminal dentro da pasta e digite 'make install'
+
+Reinicie o GNOME Shell pressionando Alt + F2, digitando r e pressionando Enter,
+ou saia e entre novamente se estiver em uma sessão Wayland.
