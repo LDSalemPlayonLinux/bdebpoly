@@ -11,6 +11,8 @@ Tokyo Night Gnome Shell Themes: https://www.gnome-look.org/p/1681470
 Tokyo Night Icon Themes: https://www.pling.com/p/1681475/
 Cursor: https://www.gnome-look.org/p/2042592
 
+Windows XP themes for Linux: git clone https://github.com/B00merang-Project/Windows-XP.git
+
 Depois de baixar os arquivos, extraia-os e mova para as pastas corretas:
 
 Icone
