@@ -7,7 +7,6 @@ Antes de instalar os temas, certifique-se de instalar os seguintes pacotes neces
 sudo apt install gnome-themes-extra gtk2-engines-murrine sassc
 
 Tokyo Night GTK Theme: https://www.pling.com/p/1681315/
-Tokyo Night Gnome Shell Themes: https://www.gnome-look.org/p/1681470
 Tokyo Night Icon Themes: https://www.pling.com/p/1681475/
 Cursor: https://www.gnome-look.org/p/2042592
 
@@ -32,10 +31,6 @@ Para aplicativos GTK4, é necessário apenas mover os arquivos 'assets', 'gtk.cs
 mv assets gtk.css gtk-dark.css thumbnail.png ~/.config/gtk-4.0/
 
 sudo mv Tokyonight-Dark Tokyonight-Dark-hdpi Tokyonight-Dark-xhdpi /usr/share/themes/
-
-Gnome Shell
-
-sudo mv Tokyonight-Dark-B-GS /usr/share/themes/
 
 2 - User Themes
 
