@@ -12,6 +12,10 @@ Cursor: https://www.gnome-look.org/p/2042592
 
 Windows XP themes for Linux: git clone https://github.com/B00merang-Project/Windows-XP.git
 
+XP Icons: https://store.kde.org/p/1158349
+
+Cursor: https://www.pling.com/p/2246027
+
 Depois de baixar os arquivos, extraia-os e mova para as pastas corretas:
 
 Icone
@@ -28,7 +32,7 @@ Antes de mover o diretório 'Tokyonight-Dark', entre nele e mova o diretório 'g
 
 Para aplicativos GTK4, é necessário apenas mover os arquivos 'assets', 'gtk.css' e 'gtk-dark.css' para o caminho ~/.config/gtk-4.0, e, se notar que o tema não foi aplicado, basta fechar e reabrir o aplicativo.
 
-mv assets gtk.css gtk-dark.css thumbnail.png ~/.config/gtk-4.0/
+mv gtk-4.0 ~/.config/
 
 sudo mv Tokyonight-Dark Tokyonight-Dark-hdpi Tokyonight-Dark-xhdpi /usr/share/themes/
 
