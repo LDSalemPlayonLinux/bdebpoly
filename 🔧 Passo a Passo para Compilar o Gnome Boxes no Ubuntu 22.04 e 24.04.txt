@@ -4,17 +4,15 @@
 
 Estas foram as dependências necessárias para a compilação:
 
-sudo apt install git meson valac libarchive-dev itstool libgtk-3-dev libportal-dev libportal-gtk3-dev libhandy-1-dev libosinfo-1.0-dev libsoup-3.0-dev libusb-1.0-0-dev libspice-client-gtk-3.0-dev libwebkit2gtk-4.1-dev libgudev-1.0-dev
+sudo apt install git libvirt-dev libvirt-daemon libvirt-daemon-system gir1.2-libvirt-glib-1.0 meson valac libarchive-dev itstool libgtk-3-dev libportal-dev libportal-gtk3-dev libhandy-1-dev libosinfo-1.0-dev libsoup-3.0-dev libusb-1.0-0-dev libspice-client-gtk-3.0-dev libwebkit2gtk-4.1-dev libgudev-1.0-dev
 
 ⚠️ O 'libvirt-gconfig-1.0' não estava disponível nos repositórios do Ubuntu 22.04 e 24.04, então é necessário compilar 'libvirt-glib' manualmente.
 
 🛠 2. Compilar e Instalar 'libvirt-glib'
 
-Caso o Ubuntu 22.04 não tenha libvirt-gconfig-1.0, siga este processo para compilá-lo:
-
 # Instalar dependências adicionais
 
-sudo apt install gtk-doc-tools gobject-introspection
+sudo apt install gtk-doc-tools gobject-introspection libxml2-dev libgirepository1.0-dev
 
 # Baixar e compilar a biblioteca
 
