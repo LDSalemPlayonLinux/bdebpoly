@@ -1,0 +1,45 @@
+🔧 Passo a Passo para Compilar o Gnome Boxes no Ubuntu 22.04 e 24.04
+
+📌 1. Instalar Dependências
+
+Estas foram as dependências necessárias para a compilação:
+
+sudo apt install git meson valac libarchive-dev itstool libgtk-3-dev libportal-dev libportal-gtk3-dev libhandy-1-dev libosinfo-1.0-dev libsoup-3.0-dev libusb-1.0-0-dev libspice-client-gtk-3.0-dev libwebkit2gtk-4.1-dev libgudev-1.0-dev
+
+⚠️ O 'libvirt-gconfig-1.0' não estava disponível nos repositórios do Ubuntu 22.04 e 24.04, então é necessário compilar 'libvirt-glib' manualmente.
+
+🛠 2. Compilar e Instalar 'libvirt-glib'
+
+Caso o Ubuntu 22.04 não tenha libvirt-gconfig-1.0, siga este processo para compilá-lo:
+
+# Instalar dependências adicionais
+
+sudo apt install gtk-doc-tools gobject-introspection
+
+# Baixar e compilar a biblioteca
+
+git clone https://gitlab.com/libvirt/libvirt-glib.git
+
+cd libvirt-glib
+
+meson setup _build --prefix=/usr
+
+ninja -C _build
+
+sudo ninja -C _build install
+
+cd ..
+
+🔥 3. Baixar o Código-Fonte do Gnome Boxes
+
+git clone https://gitlab.gnome.org/GNOME/gnome-boxes.git
+
+cd gnome-boxes
+
+⚙ 4. Compilar e Instalar o Gnome Boxes
+
+meson setup _build --prefix=/usr
+
+ninja -C _build
+
+sudo ninja -C _build install
